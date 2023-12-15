@@ -10,15 +10,17 @@ function setHorizontalMovement(){
 	var dir = bRight - bLeft
 	
 	if dir != 0 {
-		if sprite_index != spriteRun image_index = 0
-		sprite_index = spriteRun
+		if sprite_index != spriteJump and sprite_index != spriteHurt {
+			if sprite_index != spriteRun image_index = 0
+			sprite_index = spriteRun
+		}
 		var _move = dir*hspd
 		if underWater _move *= 0.5
 		x += _move
 		if place_meeting(x,y,oBarrier) x -= _move
 		image_xscale = dir		
 		
-	} else sprite_index = spriteIdle
+	} else if sprite_index != spriteJump and sprite_index != spriteHurt sprite_index = spriteIdle
 	
 }
 
@@ -26,9 +28,12 @@ function setVerticalMovement(){
 	if place_meeting(x,y+vspeed,oBarrier) {
 		var onestep = sign(vspeed)
 		if onestep != 0 while place_empty(x,y+onestep,oBarrier) y+=onestep
-		else while place_empty(x,y+onestep,oBarrier) y-=1
+		else while place_meeting(x,y+onestep,oBarrier) y-=1
 		vspeed = 0
-		if onestep == 1 instance_create_layer(x,y,"Instances",oDust)
+		if onestep == 1 {
+			instance_create_layer(x,y,"Instances",oDust)
+			if sprite_index == spriteJump sprite_index = spriteIdle
+		}
 	}
 	
 	if place_empty(x,y+1,oBarrier) {
@@ -42,6 +47,7 @@ function setVerticalMovement(){
 	if bSpace and place_meeting(x,y+1,oBarrier) and place_empty(x,y-15,oBarrier){
 		if place_meeting(x,y,oSeaArea) vspeed = -3
 		else vspeed = -15
+		sprite_index = spriteJump
 	}
 	
 }

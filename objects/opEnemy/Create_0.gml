@@ -8,9 +8,8 @@ captured = 0
 
 if place_meeting(x,y,oSeaArea) image_speed = 0.5
 
-onHit = false;
-onHited = false;
-harm = 10;
+hitted = false;
+
 
 
 

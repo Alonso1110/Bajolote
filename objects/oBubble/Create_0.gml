@@ -7,7 +7,7 @@ gravity_direction = 90
 gravity = 0.011
 alarm[0] = 900
 
-
+torrent = false
 
 
 //bbox_bottom = 20

@@ -5,7 +5,7 @@ getInput()
 underWater = place_meeting(x,y,oSeaArea)
 script_execute(playerState)
 
-
+if y > room_height room_restart()
 
 
 

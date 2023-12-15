@@ -3,6 +3,10 @@
 function PlayerStateSwim(){
 	if place_meeting(x+hspeed,y+vspeed,oBarrier) {
 		playerState = PlayerStateIdle
+		if vspeed > 1 {
+			instance_create_layer(x,y,"Instances",oDust)
+			if sprite_index == spriteJump sprite_index = spriteIdle	
+		}
 		speed = 0	
 	}
 }

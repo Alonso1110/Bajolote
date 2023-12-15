@@ -3,10 +3,10 @@
 
 if place_empty(x+dir*w,y,oBarrier) and !place_empty(x+dir*w,y+1,oBarrier){
 		x += dir*image_speed;
-		image_xscale = dir;
+		image_xscale = dir*image_yscale;
 } else dir = -1*dir; 
 
-
+event_inherited()
 
 
 

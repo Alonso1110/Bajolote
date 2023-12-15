@@ -3,6 +3,7 @@
 
 playerState = PlayerStateIdle
 speed = 0
+visible = true
 
 
 
